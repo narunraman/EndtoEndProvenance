@@ -10,7 +10,7 @@
 import json
 import ctypes
 
-feedcamflow = ctypes.CDLL("./pipe.so")
+feedcamflow = ctypes.CDLL("./dprov.so")
 
 #JSON File
 data = {}
