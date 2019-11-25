@@ -1,4 +1,5 @@
 # Pipe2Camflow
 
-to compile: cc -fPIC -shared -o pipe.so pipe.c
-then run the python program
+To compile: ```cc -fPIC -shared -o pipe.so pipe.c```
+
+Now run python program.
