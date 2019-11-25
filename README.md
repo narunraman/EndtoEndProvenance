@@ -1,4 +1,4 @@
-# Pipe2Camflow
+# EndtoEndProvenance
 
 To compile: ```cc -fPIC -shared -o dprov.so disclose_prov.c```
 
