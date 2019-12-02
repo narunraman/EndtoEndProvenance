@@ -1,5 +1,7 @@
 # EndtoEndProvenance
 
-To compile: ```cc -fPIC -shared -o dprov.so disclose_prov.c```
+To compile: ```make disclose```
 
-Now run python program.
+To run: ```python parse_prov.py```
+
+To view (install [camtool](https://github.com/CamFlow/camtool/)): camtool --publish /tmp/audit.log
