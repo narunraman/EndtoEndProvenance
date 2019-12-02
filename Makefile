@@ -5,7 +5,7 @@ CCC = gcc
 LIB = -L/usr/lib/ -l:libprovenance.so -lprovenance -lpthread -lz
 
 disclose:
-	$(CCC) $(INCLUDES) $(CCFLAGS) $(LIB) -o disclose2cam.so disclose2camflow.c
+	$(CCC) $(INCLUDES) $(CCFLAGS) $(LIB) -o disclose2cam.so disclose_prov.c
 
 clean:
 	rm -f *.so
