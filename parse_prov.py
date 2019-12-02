@@ -1,4 +1,3 @@
-#
 # author: Narun Raman
 
 ###################################
@@ -9,8 +8,10 @@
 
 import json
 import ctypes
+import string
+import sys
 
-feedcamflow = ctypes.CDLL("./dprov.so")
+feedcamflow = ctypes.CDLL("./disclose2cam.so")
 
 #JSON File
 data = {}
@@ -36,18 +37,19 @@ def extract_entity_type(node):
 def get_all_entities():
     entities = data['entity']
     for entity in entities:
-        en_prefix = 0
-        entity_i = ""
-        entity_i = {entity: entities[entity]}
+        # entity_id = extract_id(json.dumps(entity))
+        entity_i = json.dumps({entity: entities[entity]})
         if extract_entity_type(entity) == 'd':
-            get_all_data(entity_i)
+            entity_id = extract_id(json.dumps(entity))
+            get_all_data(entity_i, entity_id)
         elif extract_entity_type(entity) == 'f': 
-            get_all_functions(entity_i)
+            entity_id = extract_id(json.dumps(entity))
+            get_all_functions(entity_i, entity_id)
         elif extract_entity_type(entity) == 'l':
-            get_all_libraries(entity_i)
+            entity_id = extract_id(json.dumps(entity))
+            get_all_libraries(entity_i, entity_id)
         else:
             feedcamflow.node_environment(entity_i)
-
 def get_all_data(data_node, name):
     feedcamflow.push_data_node(data_node.encode('utf-8'), name)
     
@@ -60,15 +62,20 @@ def get_all_libraries(library_node, name):
 #EDGES
 def extract_id(node):
     string = node.split(":")
-    return int(''.join(filter(str.isdigit, string[-1])))
+    # return int(''.join([i for i in string[-1] if i.isdigit()]))
+    try:
+        x = int(''.join(filter(str.isdigit, string[-1])))
+        return x
+    except ValueError:
+        print("oops! that node did not have a numeral designator.")
 
 def get_all_p2p():
     if 'wasInformedBy' in data:
-        get_all_edges(data['wasInformedBy'], 'prov:informant', 'prov:informed')
+        return get_all_edges(data['wasInformedBy'], 'prov:informant', 'prov:informed')
 
 def get_all_p2d():
     if 'wasGeneratedBy' in data:
-        get_all_edges(data['wasGeneratedBy'], 'prov:activity', 'prov:entity')
+        return get_all_edges(data['wasGeneratedBy'], 'prov:activity', 'prov:entity')
 
 def get_all_d2p(from_data, to_procedure):
     feedcamflow.edge_uses_data(from_data, to_procedure)
@@ -77,25 +84,27 @@ def get_all_f2p(from_function, to_procedure):
     feedcamflow.edge_uses_function(from_function, to_procedure)
 
 def get_all_df2p():
-    d2p_edges = data['used']
-    for d2p in d2p_edges:
+    df2p_edges = data['used']
+    for df2p in df2p_edges:
         if extract_entity_type(df2p_edges[df2p]['prov:entity']) == 'd':
-            get_all_d2p(extract_id(d2p_edges[d2p]['prov:entity']), extract_id(d2p_edges[d2p]['prov:activity']))
+            get_all_d2p(extract_id(json.dumps(df2p_edges[df2p]['prov:entity'])), extract_id(json.dumps(df2p_edges[df2p]['prov:activity'])))
         elif extract_entity_type(df2p_edges[df2p]['prov:activity']) == 'f':
-            get_all_f2p(extract_id(d2p_edges[d2p]['prov:entity']), extract_id(d2p_edges[d2p]['prov:activity']))
+            get_all_f2p(extract_id(json.dumps(df2p_edges[df2p]['prov:entity'])), extract_id(json.dumps(df2p_edges[df2p]['prov:activity'])))
 
 def get_all_l2f():
     if 'hadMember' in data:
-        get_all_edges(data['hadMember'], 'prov:collection', 'prov:entity')
-
+        return get_all_edges(data['hadMember'], 'prov:collection', 'prov:entity')
+    
 def get_all_edges(edge_type, from_node, to_node):
-    edges = data[edge_type]
+    edges = edge_type
     for edge in edges:
         edge_prefix = edge
-        yield(extract_id(edges[edge][from_node]), extract_id(edges[edge][to_node]))
+        yield(extract_id(json.dumps(edges[edge][from_node])), extract_id(json.dumps(edges[edge][to_node])))
 
 
 ################################################ USER LEVEL API ################################################
+
+disclosed_activities = {}
 
 def import_prov(filename):
     global data
@@ -106,8 +115,8 @@ def disclose_agent():
     feedcamflow.disclose_agent(get_agent())
 
 def disclose_activities():
-    for activity, name in get_all_activities():
-        feedcamflow.push_activity(activity.encode('utf-8'), name)
+    for activity, act_id in get_all_activities():
+        disclosed_activities[act_id] = feedcamflow.push_activity(activity.encode('utf-8'), act_id)
     
 def disclose_entities():
     get_all_entities()
@@ -127,21 +136,20 @@ def disclose_member():
     for from_library, to_function in get_all_l2f():
         feedcamflow.edge_member(from_library, to_function)
 
-# def main():
-#     import_prov('../hurrecon/R/prov_script/prov.json')
-#     disclose_activities()
-    # feedcamflow.print_activities()
-    # disclose_entities()
-    # disclose_used()
-    # disclose_generated()
-    # disclose_informed()
-        # print(get_p2ps())
-	# for edge in get_p2ps():
-	# 	print(edge)
-	#with open(filename) as f:
-	#with open('../hurrecon/R/prov_hur_script/prov.json') as f:
-	#	data = json.load(f)
+def main():
+    if len(sys.argv) < 2:
+        sys.exit("Missing argument, must be of the form: python parse_prov.py <some json file>")
+    if len(sys.argv) > 2:
+        sys.exit("Too many arguments, must be of the form: python parse_prov.py <some json file>")
+    import_prov(sys.argv[1])
+    disclose_agent()
+    disclose_activities()
+    disclose_entities()
+    # feedcamflow.printList()
+    disclose_used()
+    disclose_generated()
+    disclose_informed()
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
