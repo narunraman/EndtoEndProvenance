@@ -1,0 +1,363 @@
+{
+	"prefix": {
+		"prov": "http://www.w3.org/ns/prov#",
+		"rdt": "https://github.com/End-to-end-provenance/ExtendedProvJson/blob/master/JSON-format.md"
+	},
+
+	"agent" : {
+		"rdt:a1": {
+			"rdt:tool.name": "rdtLite",
+			"rdt:tool.version": "1.2",
+			"rdt:json.version": "2.3",
+			"rdt:args.names": [
+				"overwrite",
+				"details",
+				"snapshot.size",
+				"save.debug"
+			],
+			"rdt:args.values": [
+				"TRUE",
+				"TRUE",
+				"0",
+				"FALSE"
+			],
+			"rdt:args.types": [
+				"logical",
+				"logical",
+				"numeric",
+				"logical"
+			]
+		}
+	},
+
+	"activity" : {
+		"rdt:p1": {
+			"rdt:name": "script.R",
+			"rdt:type": "Start",
+			"rdt:elapsedTime": "0.783",
+			"rdt:scriptNum": "NA",
+			"rdt:startLine": "NA",
+			"rdt:startCol": "NA",
+			"rdt:endLine": "NA",
+			"rdt:endCol": "NA"
+		},
+		"rdt:p2": {
+			"rdt:name": "main <- function() {\n\thurrecon.set.path(\"hur\")\n\tsite <- \"New",
+			"rdt:type": "Operation",
+			"rdt:elapsedTime": "0.267",
+			"rdt:scriptNum": 1,
+			"rdt:startLine": 2,
+			"rdt:startCol": 1,
+			"rdt:endLine": 15,
+			"rdt:endCol": 1
+		},
+		"rdt:p3": {
+			"rdt:name": "main()",
+			"rdt:type": "Operation",
+			"rdt:elapsedTime": "5.134",
+			"rdt:scriptNum": 1,
+			"rdt:startLine": 17,
+			"rdt:startCol": 1,
+			"rdt:endLine": 17,
+			"rdt:endCol": 6
+		},
+		"rdt:p4": {
+			"rdt:name": "script.R",
+			"rdt:type": "Finish",
+			"rdt:elapsedTime": "0.041",
+			"rdt:scriptNum": "NA",
+			"rdt:startLine": "NA",
+			"rdt:startCol": "NA",
+			"rdt:endLine": "NA",
+			"rdt:endCol": "NA"
+		}
+	},
+
+	"entity" : {
+		"rdt:d1": {
+			"rdt:name": "main",
+			"rdt:value": "function() {...",
+			"rdt:valType": "function",
+			"rdt:type": "Data",
+			"rdt:scope": "R_GlobalEnv",
+			"rdt:fromEnv": false,
+			"rdt:hash": "",
+			"rdt:timestamp": "",
+			"rdt:location": ""
+		},
+		"rdt:d2": {
+			"rdt:name": "sites.csv",
+			"rdt:value": "data/2-sites.csv",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[1], \"type\":[\"character\"]}",
+			"rdt:type": "File",
+			"rdt:scope": "undefined",
+			"rdt:fromEnv": false,
+			"rdt:hash": "675f9ebf0ccbdcae631854e57e921ff9",
+			"rdt:timestamp": "2019-12-04T14.13.47PST",
+			"rdt:location": "/home/narunraman/Research/data_prov/hurrecon/R/hur/input/sites.csv"
+		},
+		"rdt:d3": {
+			"rdt:name": "parameters.csv",
+			"rdt:value": "data/3-parameters.csv",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[1], \"type\":[\"character\"]}",
+			"rdt:type": "File",
+			"rdt:scope": "undefined",
+			"rdt:fromEnv": false,
+			"rdt:hash": "7e371cc7c6109465b9a0701c6dace7eb",
+			"rdt:timestamp": "2019-12-04T14.13.47PST",
+			"rdt:location": "/home/narunraman/Research/data_prov/hurrecon/R/hur/input/parameters.csv"
+		},
+		"rdt:d4": {
+			"rdt:name": "tracks.csv",
+			"rdt:value": "data/4-tracks.csv",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[1], \"type\":[\"character\"]}",
+			"rdt:type": "File",
+			"rdt:scope": "undefined",
+			"rdt:fromEnv": false,
+			"rdt:hash": "683a32d622427c90f7591a8f2ecaef04",
+			"rdt:timestamp": "2019-12-04T14.13.47PST",
+			"rdt:location": "/home/narunraman/Research/data_prov/hurrecon/R/hur/input/tracks.csv"
+		},
+		"rdt:d5": {
+			"rdt:name": "region.csv",
+			"rdt:value": "data/5-region.csv",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[1], \"type\":[\"character\"]}",
+			"rdt:type": "File",
+			"rdt:scope": "undefined",
+			"rdt:fromEnv": false,
+			"rdt:hash": "c36e7f33f6f26fadf0afb2c93057ae7c",
+			"rdt:timestamp": "2019-12-04T14.13.47PST",
+			"rdt:location": "/home/narunraman/Research/data_prov/hurrecon/R/hur/input/region.csv"
+		},
+		"rdt:d6": {
+			"rdt:name": "N1938 New London CT.csv",
+			"rdt:value": "data/6-N1938 New London CT.csv",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[1], \"type\":[\"character\"]}",
+			"rdt:type": "File",
+			"rdt:scope": "undefined",
+			"rdt:fromEnv": false,
+			"rdt:hash": "7a1c280dcc7dbdaf377a795b859701d8",
+			"rdt:timestamp": "2019-12-04T14.13.47PST",
+			"rdt:location": "/home/narunraman/Research/data_prov/hurrecon/R/hur/site/N1938 New London CT.csv"
+		},
+		"rdt:d7": {
+			"rdt:name": "output",
+			"rdt:value": "Path set to hur ...",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[11], \"type\":[\"character\"]}",
+			"rdt:type": "StandardOutput",
+			"rdt:scope": "Standard output",
+			"rdt:fromEnv": false,
+			"rdt:hash": "",
+			"rdt:timestamp": "",
+			"rdt:location": ""
+		},
+		"rdt:d8": {
+			"rdt:name": "N1938 New London CT.csv",
+			"rdt:value": "data/8-N1938 New London CT.csv",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[1], \"type\":[\"character\"]}",
+			"rdt:type": "File",
+			"rdt:scope": "undefined",
+			"rdt:fromEnv": false,
+			"rdt:hash": "7a1c280dcc7dbdaf377a795b859701d8",
+			"rdt:timestamp": "2019-12-04T14.13.47PST",
+			"rdt:location": "/home/narunraman/Research/data_prov/hurrecon/R/hur/site/N1938 New London CT.csv"
+		},
+		"rdt:d9": {
+			"rdt:name": "dev.2",
+			"rdt:value": "",
+			"rdt:valType": "Device",
+			"rdt:type": "Device",
+			"rdt:scope": "undefined",
+			"rdt:fromEnv": false,
+			"rdt:hash": "",
+			"rdt:timestamp": "",
+			"rdt:location": ""
+		},
+		"rdt:d10": {
+			"rdt:name": "dev.off.10.pdf",
+			"rdt:value": "data/10-dev.off.10.pdf",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[1], \"type\":[\"character\"]}",
+			"rdt:type": "File",
+			"rdt:scope": "undefined",
+			"rdt:fromEnv": false,
+			"rdt:hash": "602be7ec47af554e1cd74d03cf9d7212",
+			"rdt:timestamp": "2019-12-04T14.13.47PST",
+			"rdt:location": "/home/narunraman/Research/data_prov/hurrecon/R/hur/dev.off.10.pdf"
+		},
+
+		"rdt:environment": {
+			"rdt:name": "environment",
+			"rdt:architecture": "x86_64",
+			"rdt:operatingSystem": "linux-gnu",
+			"rdt:language": "R",
+			"rdt:langVersion": "R version 3.6.1 (2019-07-05)",
+			"rdt:script": "/home/narunraman/Research/data_prov/hurrecon/R/script.R",
+			"rdt:scriptTimeStamp": "2019-12-04T14.13.10PST",
+			"rdt:totalElapsedTime": "6.225",
+			"rdt:sourcedScripts": "",
+			"rdt:sourcedScriptTimeStamps": "",
+			"rdt:workingDirectory": "/home/narunraman/Research/data_prov/hurrecon/R/hur",
+			"rdt:provDirectory": "/home/narunraman/Research/data_prov/hurrecon/R/prov_script",
+			"rdt:provTimestamp": "2019-12-04T14.13.40PST",
+			"rdt:hashAlgorithm": "md5"
+		},
+
+		"rdt:l1": {
+			"name": "base",
+			"version": "3.6.1",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l2": {
+			"name": "datasets",
+			"version": "3.6.1",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l3": {
+			"name": "ggplot2",
+			"version": "3.2.1",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l4": {
+			"name": "graphics",
+			"version": "3.6.1",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l5": {
+			"name": "grDevices",
+			"version": "3.6.1",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l6": {
+			"name": "methods",
+			"version": "3.6.1",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l7": {
+			"name": "raster",
+			"version": "3.0-7",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l8": {
+			"name": "rdtLite",
+			"version": "1.2",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l9": {
+			"name": "sp",
+			"version": "1.3-2",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l10": {
+			"name": "stats",
+			"version": "3.6.1",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l11": {
+			"name": "utils",
+			"version": "3.6.1",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		}
+	},
+
+	"wasInformedBy" : {
+		"rdt:pp1": {
+			"prov:informant": "rdt:p1",
+			"prov:informed": "rdt:p2"
+		},
+		"rdt:pp2": {
+			"prov:informant": "rdt:p2",
+			"prov:informed": "rdt:p3"
+		},
+		"rdt:pp3": {
+			"prov:informant": "rdt:p3",
+			"prov:informed": "rdt:p4"
+		}
+	},
+
+	"wasGeneratedBy" : {
+		"rdt:pd1": {
+			"prov:activity": "rdt:p2",
+			"prov:entity": "rdt:d1"
+		},
+		"rdt:pd2": {
+			"prov:activity": "rdt:p3",
+			"prov:entity": "rdt:d7"
+		},
+		"rdt:pd3": {
+			"prov:activity": "rdt:p3",
+			"prov:entity": "rdt:d8"
+		},
+		"rdt:pd4": {
+			"prov:activity": "rdt:p3",
+			"prov:entity": "rdt:d9"
+		},
+		"rdt:pd5": {
+			"prov:activity": "rdt:p4",
+			"prov:entity": "rdt:d10"
+		}
+	},
+
+	"used" : {
+		"rdt:dp1": {
+			"prov:entity": "rdt:d1",
+			"prov:activity": "rdt:p3"
+		},
+		"rdt:dp2": {
+			"prov:entity": "rdt:d2",
+			"prov:activity": "rdt:p3"
+		},
+		"rdt:dp3": {
+			"prov:entity": "rdt:d3",
+			"prov:activity": "rdt:p3"
+		},
+		"rdt:dp4": {
+			"prov:entity": "rdt:d4",
+			"prov:activity": "rdt:p3"
+		},
+		"rdt:dp5": {
+			"prov:entity": "rdt:d5",
+			"prov:activity": "rdt:p3"
+		},
+		"rdt:dp6": {
+			"prov:entity": "rdt:d6",
+			"prov:activity": "rdt:p3"
+		},
+		"rdt:dp7": {
+			"prov:entity": "rdt:d9",
+			"prov:activity": "rdt:p4"
+		}
+	}
+}
