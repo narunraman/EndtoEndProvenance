@@ -29,14 +29,10 @@ Node* library_head = NULL;
 //creating a linked list for the edges to search through and use
 
 void node_agent(char* node) {
-	char n[strlen(node)];
-	strcpy(n, node);
 	disclose_agent(node);
 }
 
 void node_environment(char* node){
-	char n[strlen(node)];
-	strcpy(n, node);
 	disclose_entity(node);
 }
 
@@ -58,9 +54,6 @@ void push_data_node(char* node, int id) {
 	e -> Data.e = disclose_entity(node);
 	e -> next = data_head;
 	data_head = e;
-	char n[strlen(node)];
-	strcpy(n, node);
-	//printf("data node %i: %i\n", id, sizeof(char*) * strlen(node));
 }
 
 void push_function_node(char *node, int id) {
@@ -69,9 +62,6 @@ void push_function_node(char *node, int id) {
 	e -> Data.e = disclose_entity(node);
 	e -> next = function_head;
 	function_head = e;
-	char n[strlen(node)];
-	strcpy(n, node);
-	//printf("function node %i: %s\n", id, node);
 }
 
 void push_library_node(char *node, int id) {
@@ -80,9 +70,6 @@ void push_library_node(char *node, int id) {
 	e -> Data.e = disclose_entity(node);
 	e -> next = library_head;
 	library_head = e;
-	char n[strlen(node)];
-	strcpy(n, node);
-	//printf("library node %i: %i\n", id, sizeof(char*) * strlen(node));
 }
 
 /* These are the functions for the retrieving and disclosing edges
