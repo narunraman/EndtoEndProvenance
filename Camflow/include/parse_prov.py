@@ -1,10 +1,21 @@
+# 
+# parse_prov 
+# EndtoEndProvenance
+# 
+# 
 # author: Narun Raman
-
-###################################
 #
-# To Use:
-# Call import_prov to set the global data variable
-# Now can use any of the functions to extract the nodes and edges from the JSON
+# 
+
+'''
+ Functions parsing RDT JSON format.
+ More information can be found here: https://github.com/End-to-end-provenance/ExtendedProvJson/blob/master/JSON-format.md.
+ 
+ Module called by disclose_prov 
+
+ This module contains:
+ *	functions to parse agent, activities, entities, and edges of JSON
+'''
 
 import json
 import string

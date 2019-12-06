@@ -1,3 +1,23 @@
+#
+# disclose_prov
+# EndtoEndProvenance
+#
+#
+# author: Narun Raman
+# 
+
+'''
+ Connects to CamFlow API to disclose provenance from JSON.
+ Imports parse_prov module, and C shared object library.
+ 
+ Requires:
+    make the C shared object from command line to enable connection to CamFlow API.
+
+ To Use:
+    Call import_prov with path to JSON file, must follow format (more information on JSON format here: https://github.com/End-to-end-provenance/ExtendedProvJson/blob/master/JSON-format.md).
+    Call disclose_prov to disclose provenance blob to CamFlow.
+    (To visualize can use camtool: https://github.com/CamFlow/camtool.)
+'''
 
 
 import sys
