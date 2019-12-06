@@ -24,7 +24,7 @@ def extract_id(node):
 ############# NODES ############
 
 def get_agent():
-    return json.dumps(provenance_dict['agent'])[1:-1].encode('utf-8')
+    return ("\"prov:label\":" + json.dumps(provenance_dict['agent'])[1:-1]).encode('utf-8')
 
 def get_all_activities():
     activities = provenance_dict['activity']
