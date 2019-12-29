@@ -27,6 +27,7 @@ Install noWorkflow via pip (```pip install noworkflow[all]```)
       The other libraries are only used for provenance analysis. Can simply run 
       "pip install noworkflow" if only want noWorkflow, PyPosAST, SQLAlchemy, and python-future.
 
+The noWorkflow version we currently support outputs to a SQLite database, however for end2end functionality we only support JSON format. So you will also need a Prov SQL to JSON converter, which can be found [here](https://github.com/jwons/Prov-SQLtoJSON), and follow the instructions listed there to convert the provenance into a JSON format. 
 
 ### RDataTracker Installation:
 Install via git.
