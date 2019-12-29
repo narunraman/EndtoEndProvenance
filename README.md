@@ -76,9 +76,12 @@ If you are getting a postgres user authentification error, you may need to do th
    to
 	local	all		postgres		trust
 2. Restart the psql server:
+	
 	```$ sudo service postgresql restart```
 3. Login to psql and set password:
+	
 	```$ psql -U postgres```
+	
 	```db> ALTER USER postgres with password 'your-password';```
 4. Now change the pg_hba.conf file to:
 	local	all		postgres		trust
@@ -92,10 +95,24 @@ If you are getting a postgres user authentification error, you may need to do th
 
 This repo serves as a way to see functionality of End to End provenance, using the tools installed via the instructions above.
 
-## CamFlow
+## CamFlow 
 
-######Must have CamFlow installed
+##### Must have camflow-dev installed or use pre-built VM [(ova file)](https://www.dropbox.com/s/a918m7lthirnghn/Fedora_end2end.ova?dl=0)
+```
+git clone https://github.com/camflow/camflow-dev
+cd camflow-dev
+git checkout layer
+make prepare
+cd build/libprovenance
+git checkout layer
+cd ../..
+make config
+make compile
+make install
+sudo reboot now
+```
 
+### To view End to End functionality
 To generate the shared object file: ```make disclose ```
 
 To run: ```python disclose_prov.py <path-to-json>```
