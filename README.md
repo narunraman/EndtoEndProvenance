@@ -9,7 +9,7 @@ noWorkflow: version 1.11.2
 RDataTracker: requires R version 3.6.1
 
 ## Setup Instructions:
-1. install python 2and python3 (```sudo apt install <package>```)
+1. install python 2 and python3 (```sudo apt install <package>```)
 2. install pip  (```sudo apt install python-pip```)
 3. install pyenv 
 4. in whichever directory you want to work in, set the local python version to 3.5.6.
